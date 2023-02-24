@@ -1,0 +1,15 @@
+stages:
+  - "maven deploy"
+
+build_dockerfile:
+  stage: "maven deploy"
+  before_script: 
+    - echo "start to deploy/build dockerfile ..."
+  script:
+    - cd docker/
+    - bash ./deploy.sh
+  after_script:
+    - echo "deployment finished"
+  tags:
+    - epilogue-dependencies
+  allow_failure: true
